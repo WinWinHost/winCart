@@ -13,4 +13,6 @@ class CMS_Application_Resource_Cache extends Zend_Application_Resource_ResourceA
         Zend_Registry::set('cache', $cache);
         return $cache;
     }
+    
+    
 }

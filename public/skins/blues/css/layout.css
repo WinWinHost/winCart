@@ -1,28 +1,28 @@
-@CHARSET "ISO-8859-1"; 
- 
-body { 
-    font-size: 10px; 
-    background:url(../images/body.jpg) repeat-x; 
-} 
- 
-* { 
-    margin: 0; 
-    padding: 0; 
-} 
- 
-p { 
-    padding:5px; 
+@CHARSET "ISO-8859-1";
+
+body {
+    font-size: 10px;
+    background:url(../images/body.jpg) repeat-x;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    padding:5px;
     font-size:12px;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	color:#069;
-	 
-} 
-a { 
-   
+
+}
+a {
+
    color: #C00;
-} 
-a:hover{ 
-   
+}
+a:hover{
+
    color: #000;
 }
 
@@ -36,30 +36,30 @@ h1
 
 
 
- 
-#pageWrapper { 
-    width:960px; 
-    margin:10px auto 10px; auto; 
-    padding:5px; 
+
+#pageWrapper {
+    width:960px;
+    margin:10px auto 10px; auto;
+    padding:5px;
     -moz-border-radius: 5px;
-	-webkit-border-radius: 5px; 
-    border:#749BCE 1px solid; 
-    background: #fff; 
- 
-} 
- 
- 
- 
-#header { 
+	-webkit-border-radius: 5px;
+    border:#749BCE 1px solid;
+    background: #fff;
+
+}
+
+
+
+#header {
     height:60px;
 	width:930px;
 	background-color: #D6D6D6;
 	padding:5px 15px 5px 15px;
-	
+
 	-moz-border-top-right-radius: 5px;
 	-moz-border-top-left-radius: 5px;
 	-webkit-border-top-right-radius: 5px;
-	-webkit-border-top-left-radius: 5px;  
+	-webkit-border-top-left-radius: 5px;
 
 }
 
@@ -70,47 +70,52 @@ h1
 	font-family:Tahoma, Geneva, sans-serif;
 	float:left;
 	width: auto;
-	
+
 	padding:5px 50px 5px 20px;
 }
 
 .sideCart{
-			padding:6px 05px 0 6px;
+			padding:6px 5px 0 6px;
 			margin-right:10px;
 			margin-left:20px;
 			width:200px;
-			float: right;
+			float:right;
 			background:url(../../../images/cart.gif) no-repeat 18 0;
-			font-weight:900;
+			font-weight:700;
 			font-size:12px;
-			
+                        height: 30px;
+
 			}
-			
-			
+
+
 		.sideCart dt{
 			font-weight:bold;
 			font-size:16px;
 			color:#585858;
-			
+
 			padding:0 0 10px 33px;
 			}
 			.sideCart dd strong{
 				color:#c91d00;
 				font-size:12px;
+            height:30;
 				}
 
 
 
- 
-#sidebar { 
-    float: right; 
-    width:240px; 
-    height: auto; 
-    margin:0px; 
+
+#sidebar {
+
+    width:240px;
+    height: auto;
     padding:2px;
-	background-color:#fffS;
-} 			
-				
+    background-color:#fff;
+    margin-right:0px;
+    margin-top: 0px;
+    float: right;
+    
+}
+
 .nav {
 		background:#041b33;
 		width:201px;
@@ -141,31 +146,33 @@ h1
 				}
 .nav li a:hover {
 				color:#c91d00;
-				} 				
-				
-				
+				}
 
 
 
-				
-				
- 
-#main { 
-	    min-height:200px; 
+
+
+
+
+
+#main {
+	    min-height:200px;
     margin:2px 2px 0px 0px;
-	background-color:;
+
 	width:684px;
-	padding:15px
-} 
- 
- 
- 
- 
- 
- 
-#userForm { 
-    width:280px; 
-    height:auto; 
+	padding:10px;
+        float:left;
+          
+}
+
+
+
+
+
+
+#userForm {
+    width:280px;
+    height:auto;
     margin:5px 0px 5px 0px;
 	padding-left:20px;
 	padding-top:10px;
@@ -175,54 +182,54 @@ h1
 	float: right;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-weight:700;
-	 
-} 
+
+}
 
 
 
-.searchForm { 
+.searchForm {
 
-    width:202px; 
-    height: auto; 
+    width:202px;
+    height: auto;
 	margin:1px 0px 12px 0px;
 	padding-left:20px;
 	padding-top:2px;
 	padding-right:20px;
 	padding-bottom:2px;
 	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
-	background-color:; 
+
 	text-align:center;
-} 
+}
 
 .searchForm h2
-{ 
+{
 font-size:14px;
 color:#C00;
 text-transform:uppercase;
 }
 
- .left{ 
+ .left{
 
-    width:100px; 
+    width:100px;
     height:30px;
 	color:#333;
-} 
- .right{ 
+}
+ .right{
 
-    width:10px; 
-    height:30px;; 
-} 
- 
- 
- 
- 
-#footer { 
-    clear: both; 
-    height: 2.5em; 
-    margin: 0; 
-    text-align:center; 
-    font-style:italic; 
-} 
+    width:10px;
+    height:30px;;
+}
+
+
+
+
+#footer {
+    clear: both;
+    height: 2.5em;
+    margin: 0;
+    text-align:center;
+    font-style:italic;
+}
 
 
 
@@ -231,12 +238,12 @@ text-transform:uppercase;
 {
 	width:240px;
 	height:200px;
-	background-image:url(../../../images/round-and-round.jpeg); 
+	background-image:url(../../../images/round-and-round.jpeg);
 	background-repeat:no-repeat;
 	background-position:center;
 	margin:5px 0;
-	
-	
+
+
 }
 
 
@@ -257,7 +264,7 @@ text-transform:uppercase;
 .article_details
 {
 	width:330px;
-	height:auto;     
+	height:auto;
 	background-color:#FFF;
 	float:left;
 	border:4px solid #E5E5E5;
@@ -305,13 +312,13 @@ color:#6E6E6E
 
 .article_details_left img
 {
-	
+
 	float: none;
 	width:115px;
 	border:none;
 	padding-left:20px;
-	
-	
+
+
 }
 
 
@@ -344,11 +351,11 @@ height: auto;
 
 .article_more
 {
-	
+
 	font-size:12px;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
-	
-	
+
+
 	list-style:none;
 }
 
@@ -358,7 +365,7 @@ height: auto;
 .article_detail_open
 {
 	width:680px;
-	height:auto;     
+	height:auto;
 	background-color:#FFF;
 	float:left;
 	border:4px solid #E5E5E5;
@@ -406,13 +413,13 @@ color:#6E6E6E
 
 .article_details_left_open img
 {
-	
+
 	float: none;
 	width:240px;
 	border:none;
 	padding-left:20px;
-	
-	
+
+
 }
 
 
@@ -454,35 +461,35 @@ padding:0px 0 4px 8px;
 
 
 
-.featuredItem { 
-    
+.featuredItem {
+
     height:auto;
 	width:670px;
-    margin: 0; 
-    text-align:center; 
+    margin: 0;
+    text-align:center;
     font-style:italic;
 	background-color: #CCC;
-} 
+}
 
-.featuredItemslug { 
-    
+.featuredItemslug {
+
     height:auto;
 	width:400px;
-    margin:0; 
-    text-align:center; 
+    margin:0;
+    text-align:center;
     font-style:italic;
 	background-color:;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	text-transform:uppercase;
 	text-align:left;
-} 
-.featuredItemimage { 
+}
+.featuredItemimage {
 
 	width:160px;
 	height: auto;
     margin:0;
 	float:left;
-    text-align:center; 
+    text-align:center;
     font-style:italic;
 	background-color:;
 	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -491,13 +498,13 @@ padding:0px 0 4px 8px;
 	border:#749BCE 1px solid;
 	margin-top:20px;
 }
-.featuredItemdescription{ 
+.featuredItemdescription{
 
 	width:320px;
 	height:auto;
 	margin-right:10px;
 	float:right;
-    text-align:center; 
+    text-align:center;
     font-style:italic;
 	background-color:;
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -506,8 +513,8 @@ padding:0px 0 4px 8px;
 	font-size:12px;
 	padding-right:20px;
 	border:#749BCE 0px solid;
-	margin-top:20px; 
-	
+	margin-top:20px;
+
 }
 
 
@@ -517,44 +524,44 @@ padding:0px 0 4px 8px;
 
 /** Menus **/
 
-.menusfield { 
+.menusfield {
 
     height:auto;
 	width:670px;
-    margin: 0; 
+    margin: 0;
     text-align:center;
-	padding:5px; 
+	padding:5px;
     -moz-border-radius: 5px;
-	-webkit-border-radius: 5px; 
-    border:#749BCE 1px solid; 
+	-webkit-border-radius: 5px;
+    border:#749BCE 1px solid;
     background: #fff;
 	font-size:12px;
 	font-weight:700;
 }
-.menusdesc 
-{ 
+.menusdesc
+{
 	color:#036;
 }
 
 
 /** Content **/
 
-.contentfield { 
+.contentfield {
 
     height:auto;
 	width:670px;
-    margin: 0; 
+    margin: 0;
     text-align:center;
-	padding:5px; 
+	padding:5px;
     -moz-border-radius: 5px;
-	-webkit-border-radius: 5px; 
-    border:#749BCE 1px solid; 
+	-webkit-border-radius: 5px;
+    border:#749BCE 1px solid;
     background: #fff;
 	font-size:12px;
 	font-weight:700;
 }
-.contentdesc 
-{ 
+.contentdesc
+{
 	color:#036;
 }
 
@@ -563,22 +570,22 @@ padding:0px 0 4px 8px;
 
 /** Search **/
 
-.searchfield { 
+.searchfield {
 
     height:auto;
 	width:670px;
-    margin: 0; 
+    margin: 0;
     text-align:center;
-	padding:5px; 
+	padding:5px;
     -moz-border-radius: 5px;
-	-webkit-border-radius: 5px; 
-    border:#749BCE 1px solid; 
+	-webkit-border-radius: 5px;
+    border:#749BCE 1px solid;
     background: #fff;
 	font-size:12px;
 	font-weight:700;
 }
-.searchdesc 
-{ 
+.searchdesc
+{
 	color:#036;
 }
 
@@ -588,22 +595,22 @@ padding:0px 0 4px 8px;
 
 /** Users **/
 
-.usersfield { 
+.usersfield {
 
     height:auto;
 	width:670px;
-    margin: 0; 
+    margin: 0;
     text-align:center;
-	padding:5px; 
+	padding:5px;
     -moz-border-radius: 5px;
-	-webkit-border-radius: 5px; 
-    border:#749BCE 1px solid; 
+	-webkit-border-radius: 5px;
+    border:#749BCE 1px solid;
     background: #fff;
 	font-size:12px;
 	font-weight:700;
 }
-.usersdesc 
-{ 
+.usersdesc
+{
 	color:#036;
 }
 
@@ -692,15 +699,15 @@ color:#6E6E6E
 	float:right;
 	padding-right:5px;
 	padding-top:7px;
-	
-	
+
+
 }
 
 
 .categories {
 		background:#ECDDCE;
 		padding:5px 5px;
-		width:215px;
+		width:200px;
 		float:right;
 		list-style:none;
 		margin-top:5px;
@@ -728,20 +735,20 @@ color:#6E6E6E
 				}
 			.categories li a:hover {
 				text-decoration:underline;
-				}				
-				
+				}
+
 			  .categories h3{
 				font-family:Tahoma;
-				font-size:14px;
+				font-size:13px;
 				color: #2A1F55;
 				background-color:#E5E5E5;
-				padding:8px 0 20px 8px;
+				padding:8px 0 20px 4px;
 				height:10px;
-				width:205px;
+				width:195px;
 				text-transform:uppercase;
-				
+
 					}
-				
+
 
 
 
@@ -751,7 +758,7 @@ color:#6E6E6E
 .product_details
 {
 	width:680px;
-	height:auto;     
+	height:auto;
 	background-color:#FFF;
 	float:left;
 	border:4px solid #E5E5E5;
@@ -799,12 +806,12 @@ color:#6E6E6E
 
 .product_details_left img
 {
-	
+
 	float:none;
 	padding-left:10px;
 	width:200px;
-	
-	
+
+
 }
 
 
@@ -850,16 +857,16 @@ padding:10px 0 4px 8px;
 
 /** Forms **/
 
-.loginfield { 
-    
+.loginfield {
+
     height:auto;
 	width:670px;
-    margin: 0; 
+    margin: 0;
     text-align:center;
-	padding:5px; 
+	padding:5px;
     -moz-border-radius: 5px;
-	-webkit-border-radius: 5px; 
-    border:#749BCE 1px solid; 
+	-webkit-border-radius: 5px;
+    border:#749BCE 1px solid;
     background: #fff;
 	font-size:12px;
 	font-weight:700;
@@ -891,7 +898,7 @@ padding:10px 0 4px 8px;
 	padding-top:11px;
 	padding-left:6px;
 	background-color:#CCCCCC;
-	margin:5px 260px 5px; 
+	margin:5px 260px 5px;
 	display: block;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size: 115%;
@@ -971,7 +978,7 @@ padding:10px 0 4px 8px;
 .loginfield username:focus, .username:hover {
 	background-color:#F0FFE6;
 }
-   
+
 .loginfield password {
     	background-image: url(images/16s.png);
     	background-repeat: no-repeat;
@@ -997,8 +1004,8 @@ padding:10px 0 4px 8px;
 }
 .loginfield buttons {
 	background: #e3e3db;
-	font-size:12px; 
-	color: #989070; 
+	font-size:12px;
+	color: #989070;
 	padding: 6px 14px;
 	border-width: 2px;
 	border-style: solid;
@@ -1024,3 +1031,4 @@ font-size:20px;
 font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 font-weight:700;
 }
+

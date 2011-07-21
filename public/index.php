@@ -1,6 +1,17 @@
 <?php
+
 error_reporting(0);
 date_default_timezone_set('America/Los_Angeles');
+
+set_include_path(implode(PATH_SEPARATOR,
+array(
+dirname(__FILE__)  . DIRECTORY_SEPARATOR . 'wincart' . DIRECTORY_SEPARATOR . 'library',
+get_include_path(),
+)
+
+));
+
+
 
 // Define path to application directory
 defined('APPLICATION_PATH')
@@ -8,13 +19,14 @@ defined('APPLICATION_PATH')
 
 // Define application environment
 defined('APPLICATION_ENV')
-    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'development'));
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH . '/../library'),
     get_include_path(),
 )));
+
 
 /** Zend_Application */
 require_once 'Zend/Application.php';
@@ -24,5 +36,7 @@ $application = new Zend_Application(
     APPLICATION_ENV,
     APPLICATION_PATH . '/configs/application.ini'
 );
-$application->bootstrap()
-            ->run();
+
+$application->bootstrap()->run();
+
+?>

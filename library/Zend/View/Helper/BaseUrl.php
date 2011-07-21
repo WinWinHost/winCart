@@ -52,13 +52,18 @@ class Zend_View_Helper_BaseUrl extends Zend_View_Helper_Abstract
     {
         // Get baseUrl
         $baseUrl = $this->getBaseUrl();
+        
 
         // Remove trailing slashes
         if (null !== $file) {
             $file = '/' . ltrim($file, '/\\');
         }
+        
 
         return $baseUrl . $file;
+        return $baseUrl . '/public' . $file;  
+        
+         
     }
 
     /**
@@ -113,4 +118,5 @@ class Zend_View_Helper_BaseUrl extends Zend_View_Helper_Abstract
 
         return $url;
     }
+    
 }
