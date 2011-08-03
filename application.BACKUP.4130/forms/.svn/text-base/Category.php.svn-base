@@ -1,0 +1,26 @@
+<?php 
+class Form_CategoryForm extends Zend_Form 
+{ 
+    public function init() 
+    { 
+	    // create new element 
+        $id = $this->createElement('hidden', 'id'); 
+		// element options 
+        $id->setDecorators(array('ViewHelper')); 
+        // add the element to the form 
+        $this->addElement($id); 
+		
+		// create new element 
+        $name = $this->createElement('text', 'name'); 
+        // element options 
+        $name->setLabel('Product Name: '); 
+        $name->setRequired(TRUE); 
+        $name->setAttrib('size',40); 
+        // add the element to the form 
+        $this->addElement($name); 
+		
+		$submit = $this->addElement('submit', 'submit', array('label' => 'Submit')); 
+	
+	}
+}
+?>

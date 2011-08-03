@@ -1,0 +1,29 @@
+<link href="/skins/template/css/orders.css" type="text/css" rel="stylesheet">
+
+<?php if($this->orders->count()>0){?>
+<table id="orders">
+	<tr>
+		<th>Order ID</th>
+		<th>Data</th>
+		<th>Status</th>
+		<th>Receipts</th>
+	</tr >
+	<?php 
+	  foreach ($this->orders as $order){
+	  ?>
+	  <tr style="background-color: <?php  if($order->status=='new'){echo '#B5FFA4';}elseif ($order->status=='cancelled'){echo '#FFC0C0';} elseif ($order->status=='shipped'){echo '#D6D6D6';}?>">
+	  	<td><a href='orderdetails/id/<?php echo $order->id?>'><?php echo $order->id?></td>
+	  	<td><?php echo date('Y-m-d',$order->insert_date)?></td>
+	  	<td><?php  if($order->status=='new') {echo "in progress";} else {echo $order->status; } ?></td>
+	  	<td><?php 
+	  	if(file_exists('pdf/'.$order->id .'-'.date('d-m-Y',$order->insert_date).'.pdf')){?><a href="<?php  echo  '/pdf/'.$order->id .'-'.date('d-m-Y',$order->insert_date).'.pdf' ?>">  <?php echo $order->id .'-'.date('d-m-Y',$order->insert_date).'.pdf' ?> </a><?php }?></td>
+	  </tr>
+	  
+	  <?php 
+	  }
+	
+	?>
+</table>
+<?php }else{?>
+There are no orders
+<?php }?>

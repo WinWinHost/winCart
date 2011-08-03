@@ -1,0 +1,139 @@
+<style >
+#receipt{
+	width: 650px;
+	margin:0 auto 0 auto;
+}
+
+#receipt table{
+	border-collapse: collapse;
+	border: 1px solid black;
+	margin:0 auto 0 auto; 
+}
+
+#receipt th{
+	border: 1px solid black;
+	padding: 5px;
+	background-color: #c2d0e8;
+	
+}
+
+#receipt td{
+	border: 1px solid black;
+	padding: 5px;
+    color: #39609F;
+    text-align: center;
+	
+}
+</style>     
+     
+
+<?php 
+if($this->order){
+    ?>
+ 
+ <h2>Order ID <?php echo $this->order->id?></h1>   
+    
+    <form method="post" action="/ordersadmin/setstatus" style='margin:0 auto 0 auto;width:300px'>
+    <input type="hidden" name='id' id='id' value='<?php echo $this->order->id?>'>
+    	    <label for='status'>Status:</label>
+	    <select id='status' name='status'>
+	     <option value="shipped" <?php if($this->order->status=='shipped') echo 'selected=selected'?>>shipped</option>
+	       <option value="new" <?php if($this->order->status=='new') echo 'selected=selected'?>>in progress</option>
+	       <option value="cancelled" <?php if($this->order->status=='cancelled') echo 'selected=selected'?>>cancelled</option>
+	      <input type="submit" value='set new status' style='margin-left:5px'>
+	    </select>
+	
+	</form>
+    <br/>
+ <div id="receipt">   
+	<div style="float: left;border: 1px solid black;width:200px">
+		<div style="border-bottom:1px solid black; 	background-color: #c2d0e8;">Sold To</div>
+		<div>
+		    <?php echo  $this->order->bfName;?> <?php echo $this->order->blName;?>
+		    <br /><br />
+		    <?php echo  $this->order->bAddress;?> 
+		    <br />
+		    <?php echo  $this->order->bCity;?> , <?php echo  $this->order->bZip;?>
+		    <br />
+		    <?php echo  $this->order->bState;?> , <?php echo  $this->order->bCountry;?>
+		</div>
+	</div>
+	
+
+	
+		<div style="float: right;border: 1px solid black;width:200px">
+		<div style="border-bottom:1px solid black; 	background-color: #c2d0e8;">Shipped To</div>
+		<div>
+		    <?php echo  $this->order->sfName;?> <?php echo $this->order->slName;?>
+		    <br /><br />
+		    <?php echo  $this->order->sAddress;?> 
+		    <br />
+		    <?php echo  $this->order->sCity;?> , <?php echo  $this->order->sZip;?>
+		    <br />
+		    <?php echo  $this->order->sState;?> , <?php echo  $this->order->sCountry;?>
+		</div>
+	</div>
+	
+	<br style="clear: both;"/> 	<br /> <br />
+	
+    
+    <br style="clear: both"/>
+    
+    <?php 
+	
+	$orderDetailsModel=New Model_OrdersDetails(); //object to the order details table
+	$productModel = new Model_Products();
+	
+	$details=$orderDetailsModel->getOrderDetails($this->order->id);
+
+	?>
+	
+	<table>
+		<tr>
+			<th>Item#</th>
+			<th>Description</th>
+			<th>Ordered</th>
+			<th>Shipped</th>
+			<th>Unit Price</th>
+			<th>Total</th>
+		</tr>
+		
+		<?php foreach($details as $detail){ 
+		    $product = $productModel->find($detail->prodID)->current(); 
+		?>
+		<tr>
+			<td><?php  echo $detail->prodID;?></td>
+			<td><?php echo $product->name;?></td>
+			<td><?php echo $detail->quantity?></td>
+			<td><?php echo $detail->quantity?></td>
+			<td><?php echo $product->price;?></td>
+			<td><?php echo number_format ($product->price*$detail->quantity,2)?></td>
+		</tr>
+		<?php }?>
+		<tr>
+			<td colspan="5" style="text-align: right;">Subtotal:</td>
+			<td><?php  echo number_format ($this->order->subtotal,2);?></td>
+		</tr>
+		
+		<tr>
+			<td colspan="5" style="text-align: right;">Shipping:</td>
+			<td><?php  echo number_format ($this->order->shipping,2);?></td>
+		</tr>
+		
+		<tr>
+			<td colspan="5" style="text-align: right;">Packet Total:</td>
+			<td><?php  echo number_format ($this->order->total,2);?></td>
+		</tr>
+	</table>
+
+	
+</div>
+    
+    
+    
+    <?php 
+}else{
+?>
+
+Sorry, wrong id
+<?php }?>
