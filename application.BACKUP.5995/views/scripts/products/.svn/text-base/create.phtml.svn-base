@@ -1,0 +1,79 @@
+	<script type="text/javascript" src="/js/HtmlBox/htmlbox.colors.js"></script>
+	<script type="text/javascript" src="/js/HtmlBox/htmlbox.styles.js"></script>
+	<script type="text/javascript" src="/js/HtmlBox/htmlbox.syntax.js"></script>
+	<script type="text/javascript" src="/js/HtmlBox/htmlbox.undoredomanager.js"></script>
+	<script type="text/javascript" src="/js/HtmlBox/htmlbox.full.js"></script>
+
+
+<h2>Create a new product</h2> 
+<p>To create a new product complete this form and click submit...</p> 
+<?php 
+
+ 
+echo $this->form; ?> 
+
+<script language="Javascript" type="text/javascript">
+$("#keywords").css("height","50%").css("width","50%").htmlbox({
+    toolbars:[
+	    [
+		// Cut, Copy, Paste
+		"separator","cut","copy","paste",
+		// Undo, Redo
+		"separator","undo","redo",
+		// Bold, Italic, Underline, Strikethrough, Sup, Sub
+		"separator","bold","italic","underline","strike","sup","sub",
+		// Left, Right, Center, Justify
+		"separator","justify","left","center","right",
+		// Ordered List, Unordered List, Indent, Outdent
+		"separator","ol","ul","indent","outdent",
+		// Hyperlink, Remove Hyperlink, Image
+		"separator","link","unlink","image"
+		
+		],
+		[// Show code
+		"separator","code",
+        // Formats, Font size, Font family, Font color, Font, Background
+        "separator","formats","fontsize","fontfamily",
+		"separator","fontcolor","highlight",
+		],
+		[
+		//Strip tags
+		"separator","removeformat","striptags","hr","paragraph",
+
+		]
+	],
+	skin:"default"
+});
+
+$("#description").css("height","50%").css("width","50%").htmlbox({
+    toolbars:[
+	    [
+		// Cut, Copy, Paste
+		"separator","cut","copy","paste",
+		// Undo, Redo
+		"separator","undo","redo",
+		// Bold, Italic, Underline, Strikethrough, Sup, Sub
+		"separator","bold","italic","underline","strike","sup","sub",
+		// Left, Right, Center, Justify
+		"separator","justify","left","center","right",
+		// Ordered List, Unordered List, Indent, Outdent
+		"separator","ol","ul","indent","outdent",
+		// Hyperlink, Remove Hyperlink, Image
+		"separator","link","unlink","image"
+		
+		],
+		[// Show code
+		"separator","code",
+        // Formats, Font size, Font family, Font color, Font, Background
+        "separator","formats","fontsize","fontfamily",
+		"separator","fontcolor","highlight",
+		],
+		[
+		//Strip tags
+		"separator","removeformat","striptags","hr","paragraph",
+
+		]
+	],
+	skin:"default"
+});
+</script>

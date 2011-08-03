@@ -1,0 +1,14 @@
+<?php 
+if($this->finish){
+    ?>
+    <h3>Installation finished succesfull.Visit the <a href='/index/' >homepage </a></h3>
+    
+    <?php
+}elseif($this->error) echo $this->error; 
+      else{?> 
+          
+          <h3>Set Site general information</h3>
+          
+      <?php     
+          echo $this->form;
+      }?>

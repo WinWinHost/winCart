@@ -1,0 +1,32 @@
+<link href="/skins/template/css/admin.css" type="text/css"  rel="stylesheet" />
+
+
+
+
+
+<h2 class="pageadminfieldh2">Categories</h2> 
+
+<div class="pageadminfield"> 
+<?php if($this->products != null) { ?> 
+
+<div class="pageadminfieldname">
+<h2>Category Name</h2>
+</div>
+
+
+<div class="pageadminfieldactions">
+<h2>Actions</h2>
+</div>
+
+    <?php echo $this->partialLoop('partials/_cat-row.phtml', $this->products); ?>
+
+<?php }else{?> 
+
+
+<p>You do not have any categories yet.</p> 
+<?php }?> 
+<div class="pageadminfieldcreate">
+<a href='/productsedit/addcat'>Create a new category</a>
+</div>
+
+</div>

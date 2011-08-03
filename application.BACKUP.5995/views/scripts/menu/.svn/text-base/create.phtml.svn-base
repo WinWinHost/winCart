@@ -1,0 +1,4 @@
+<h2>Create a new menu</h2> 
+<p>To create a new menu complete this form and click submit...</p> 
+<?php echo $this->form; ?> 
+ 
