@@ -1,0 +1,333 @@
+
+<link href="/skins/template/css/cart.css" type="text/css"  rel="stylesheet" />
+<link href="/skins/template/css/error.css" type="text/css"  rel="stylesheet" />
+
+<script type="text/javascript"><!--
+
+
+$(document).ready(function(){
+	   $("#shippingCheck").click(function(event){
+		  
+	     if($("#shipping-info").is(':visible')){
+	    	
+		      $("#shipping-info").hide();
+		      $("#shipping-info:input").val('');
+	     }
+	     else{
+		      $("#shipping-info").show();
+		     
+	     }
+	   });
+
+	   $("#checkoutForm").validate({
+
+		   rules: {
+		
+			lastname: "required",
+			cc: {
+				required: true,
+				number:true,
+				minlength: 16
+				
+			},
+			mm: {
+				required: true,
+				minlength: 2,
+				number:true
+				
+			},
+			yy: {
+				required: true,
+				minlength: 2,
+				number:true
+				
+			},
+			ccw: {
+				required: true,
+				minlength: 3,
+				number:true
+				
+			},
+			cardFirstName: {
+				required: true,
+				minlength: 3
+				
+			},
+			cardLastName: {
+				required: true,
+				
+				minlength: 3
+				
+			}
+	
+		}
+		   
+
+		   });
+	   
+});
+
+function setShipping(country)
+{
+
+	if(country=='US')
+		{
+			$('#shipping').val('4.95');
+			$('#shipping_type').html('Shipping cost (inside US) :');
+			$('#shipping_cost').html('4.95');
+			
+		}
+	else
+		{
+			$('#shipping').val('14.95');
+			$('#shipping_type').html('Shipping cost (outside US) :');
+			$('#shipping_cost').html('14.95');
+		
+		}
+		
+	
+}
+--></script>
+
+<h1>Checkout Details </h1>
+
+<?php if($this->cart != null) {
+	
+		$productModel = new Model_Products();
+		$total=0;
+		$identity=$this->identity; 
+		
+		$locale = new Zend_Locale('en_US');
+        
+        $countries = ($locale->getTranslationList('Territory', 'en', 2));
+        asort( $countries, SORT_LOCALE_STRING);
+
+        $shipping=0;
+        $shippping_type='';
+   		if($identity->country=="US")
+   		{
+   		    $shipping=4.95;
+   		    $shippping_type="(inside US)";
+   		}
+   		else
+   		{
+   		     $shipping=14.95;  
+   		     $shippping_type="(outside US)";
+   		}
+   		               
+	?>
+<table class="cart">
+   
+    <tr>
+
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>       
+    </tr>
+  
+   <?php foreach ($this->cart as  $item){ 
+   		
+   					$product = $productModel->find($item['prodID'])->current(); 
+   						
+   	?>
+     <tr>
+   
+     	<td><?php echo $product->name?></td>
+        
+     	<td><?php echo $item['quantity']?></td>
+     	<td><?php echo $product->price?></td>
+        
+        <td><?php echo $prodtotal = number_format ($product->price*$item['quantity'],2);$subtotal+=$prodtotal;?></td>
+       
+        
+     </tr>
+    
+   <?php }?>
+      <tr>
+         <td><a href="/cart/delete/">Manage Cart</a></td>
+     </tr>
+	
+   <tr>
+   		<td colspan="3" style="text-align: right;" id="shipping_type">Shipping cost <?php echo $shippping_type?> :</td>
+   		<td id="shipping_cost">
+   		<?php     
+
+   		    echo number_format($shipping,2);
+   		?>
+   		</td>
+   </tr>	
+	   
+   <tr>
+   		<td colspan="3" style="text-align: right;">Total:</td>
+   		<td><?php echo number_format($subtotal+$shipping,2);?></td>
+   </tr>
+  
+</table>
+<br />
+
+
+
+<form method="post" action="/cart/transaction/" id="checkoutForm">
+<label for="shippingCheck" >Is shipping address different from billing? </label><input type="checkbox" name="shippingCheck" id="shippingCheck" /> 
+<br /><br />
+<input type="hidden" name="subtotal" id="subtotal" value="<?php echo $subtotal;?>">
+<input type="hidden" name="shipping" id="shipping" value="<?php echo $shipping;?>">
+<input type="hidden" name="total" id="total" value="<?php echo $subtotal+$shipping;?>">
+<input type="hidden" name="quantity" id="quantity" value="<?php echo $item['quantity'];?>">
+
+<fieldset class="checkout-form-personal"><legend>Billing Information</legend>
+ 
+	<div > 
+		<label for="bfName">First Name:</label> 
+		<input type="text" class="required" name="bfName" id="bfName" value="<?php  echo $identity->first_name;?>" />
+	</div>
+	
+	<div > 
+		<label  for="blName">Last Name:</label>
+		 <input type="text" class="required" name="blName" id="blName" value="<?php  echo $identity->last_name;?>" /> 
+	</div>
+	
+	<div > 
+		<label for="bAddress" >Address:</label> 
+		<input  type="text" class="required" name="bAddress" id="bAddress" value="<?php  echo $identity->address;?>" /> 
+	</div>
+	
+	<div > 
+		<label  for="bCountry">Country:</label> 
+		<select class="required" name="bCountry" id="bCountry" onchange="if($('#shippingCheck').is(':not(:checked)')){ setShipping(this.value)};">
+		<?php 
+		         foreach ($countries as $key => $value) 
+         {            
+              if($key==$identity->country) 
+              {
+                  ?>
+                    <option value="<?php echo $key?>" selected="selected"><?php echo $value?></option>
+                  <?php 
+              }else
+              {
+                  ?>
+                    <option value="<?php echo $key?>" ><?php echo $value?></option>
+                  <?php 
+              }    
+         }
+         ?>
+         </select>
+	</div>
+	
+	
+	<div > 
+		<label  for="bState">State:</label> 
+		<input type="text"  class="required" name="bState" id="bState" value="<?php  echo $identity->state;?>" /> 
+	</div>
+	
+	<div > 
+		<label for="bCity" >City:</label> 
+		<input  type="text"  class="required" name="bCity" id="bCity" value="<?php  echo $identity->city;?>" /> 
+	</div>
+	
+	<div > 
+		<label  for="bZip">Zip:</label> 
+		<input  type="text"  class="required" name="bZip" id="bZip" value="<?php  echo $identity->zip;?>" /> 
+	</div>
+
+
+</fieldset>
+
+<fieldset class="checkout-form-personal" id="shipping-info" style="display: none;"><legend>Shipping Information</legend>
+ 
+	<div > 
+		<label  for="sfName">First Name:</label> 
+		<input type="text" name="sfName" id="sfName" value="<?php  echo $identity->first_name;?>" />
+	</div>
+	
+	<div > 
+		<label  for="slName">Last Name:</label>
+		 <input type="text" name="slName" id="slName" value="<?php  echo $identity->last_name;?>" /> 
+	</div>
+	
+	<div > 
+		<label  for="sAddress">Address:</label> 
+		<input  type="text" name="sAddress" id="sAddress" value="<?php  echo $identity->address;?>" /> 
+	</div>
+	
+	<div > 
+		<label  for="sCountry">Country:</label> 
+		<select name="sCountry" id="sCountry" onchange="setShipping(this.value)">
+		<?php 
+		         foreach ($countries as $key => $value) 
+         {            
+              if($key==$identity->country) 
+              {
+                  ?>
+                    <option value="<?php echo $key?>" selected="selected"><?php echo $value?></option>
+                  <?php 
+              }else
+              {
+                  ?>
+                    <option value="<?php echo $key?>" ><?php echo $value?></option>
+                  <?php 
+              }    
+         }
+         ?>
+         </select>
+	</div>
+	
+	
+	<div > 
+		<label  for="sState">State:</label> 
+		<input type="text" name="sState" id="sState" value="<?php  echo $identity->state;?>" /> 
+	</div>
+	
+	<div > 
+		<label  for="sCity">City:</label> 
+		<input  type="text" name="sCity" id="sCity" value="<?php  echo $identity->city;?>" /> 
+	</div>
+	
+	<div > 
+		<label  for="sZip">Zip:</label> 
+		<input  type="text" name="sZip" id="sZip" value="<?php  echo $identity->zip;?>" /> 
+	</div>
+
+
+</fieldset>
+
+
+ <fieldset class="checkout-form-details"><legend>Payment Information</legend>
+
+	<div > 
+		<label  for="cc" style="text-align: right; float:left;width:130px;"> Credit Card Number:</label> 
+		<input type="text"  class="required" name="cc" id="cc" value="" maxlength="16" size="16"/> 
+	</div>
+	
+	<div>Expires: 
+		<label for="mm" style="margin-left: 5px;">MM:</label> 
+		<input type="text"  class="required" name="mm" id="mm" value="" maxlength="2" size="2" /> 
+		
+		<label for="yy" style="margin-left: 5px;">YY:</label >
+		<input type="text"  class="required" name="yy" id="yy" value="" maxlength="2" size="2" /> 		 	
+	</div>
+	<div>
+		<label for="ccv">CCW:</label> 
+		<input type="text"  class="required" name="ccv" id="ccv" value="" maxlength="3" size="3" /> 
+	</div>
+	<div > 
+		<label  for="cardFirstName" style="text-align: right; float:left;width:130px;">First Name on Card:</label> 
+		 <input type="text"  class="required" name="cardFirstName" id="cardFirstName" value="" /> 
+	</div>
+	<div > 
+		<label  for="cardLastName" style="text-align: right; float:left;width:130px;">Last Name on Card:</label> 
+		<input  type="text"  class="required" name="cardLastName" id="cardLastName" value="" /> 
+	</div>
+
+
+</fieldset>
+
+<input type="submit">
+
+</form>
+<?php }else{?>
+
+You don't have products in your cart!
+
+<?php } ?>

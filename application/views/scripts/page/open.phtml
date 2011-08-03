@@ -1,0 +1,43 @@
+<div class="article_details_open">
+
+<h3>
+
+<?php echo $this->page->name?>
+        
+</h3>
+
+
+
+<div class="article_details_left_open">
+
+
+<img  src='<?php if($this->page->image){echo $this->page->image; } else {echo '/images/noimage.jpg';}?>' alt='<?php echo $this->page->name?>' style='float:left' />
+
+
+
+
+</div>
+
+
+<div class="article_details_right_open">
+
+
+<p><span>
+<?php echo $this->page->content ?>
+
+</span></p>
+<a href='/page/<?php echo $page->slug; ?>' > Go Back to Aritcles page</a>
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+

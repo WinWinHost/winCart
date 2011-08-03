@@ -1,0 +1,129 @@
+<xml version="1.0" encoding="UTF-8" >
+<?php
+
+echo $this->doctype('XHTML1_STRICT');
+
+$auth = Zend_Auth::getInstance();
+if($auth->hasIdentity())
+{
+    $user=$auth->getIdentity();
+}
+
+$menuModel=new Model_Menu();
+$select=$menuModel->select();
+
+if(!$user){
+   $select->where('access_level !=?','admin');
+   $select->where('access_level !=?','user');
+}
+elseif($user->role=='user'){
+    $select->where('access_level !=?','admin');
+}
+$select->order('position');
+$menus=$menuModel->fetchAll($select);
+
+$optionModel=New Model_Options();
+$options=$optionModel->find(1)->current();
+
+ $this->layout()->userForm = $this->action('index', 'user');
+ $this->layout()->sideCart = $this->action('count', 'cart');
+
+
+?>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+
+<link href="/skins/blues/css/layout.css" type="text/css"  rel="stylesheet" />
+<link href="/skins/blues/css/form.css"   type="text/css"  rel="stylesheet" />
+
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" />
+<?php
+
+    if($this->layout()->keywords)$this->headMeta()->appendName('keywords', $this->layout()->keywords);
+      else  $this->headMeta()->appendName('description', $options->meta_keywords);
+
+    if($this->layout()->description)$this->headMeta()->appendName('description', $this->layout()->description);
+       else  $this->headMeta()->appendName('description', $options->meta_description);
+
+    if($this->layout()->title) $this->headTitle($this->layout()->title) ;
+       else $this->headTitle($options->title);
+    echo $this->headMeta();
+    echo $this->headTitle();
+?>
+</head>
+
+<body>
+    <div id="pageWrapper">
+        <div class="header">
+
+	<div class="headerleft">
+	<div id="logo">
+            <h1> <?php echo $options->title?> </h1>
+           &nbsp; online shopping services
+        </div></div>
+		
+		
+	<div class="headerleft"><div class="sideCart">
+            <dt>Shopping Cart</dt>
+			   <dd>You have <?php if($this->layout()->sideCart>0){?><a href="/cart"><?php  echo $this->layout()->sideCart?></a><?php }else echo "0"?>  Items in your Cart</dd>
+			</div>
+			
+			
+			<div id="userForm">
+				<?php    echo $this->layout()->userForm;?>&nbsp;
+			</div>
+			
+			
+			</div>
+	
+	 
+	<div class="headerleft">
+	<div class="searchForm">
+				<h3>Search Here</h3>
+				<?php
+					$searchForm = new Form_SearchForm();
+					$searchForm->setAction('/search');
+					echo $searchForm;
+				?>
+
+			    </div>
+	</div> 
+
+        
+		
+            
+
+
+        
+         </div>
+
+<div id="main">
+            <?php echo $this->layout()->content?>&nbsp;
+
+        </div>
+
+		<div id="sidebar">
+                
+
+                <br />
+		<div id="nav" class="nav">
+            <?php
+            foreach ($menus as $menu){
+              echo   $this->action('render', 'menu', null,
+                    array('menu' => $menu->id));
+            }
+            ?>&nbsp;
+        </div>
+            <div id="advert">
+			Ad (250*250px)
+			            </div>
+     </div>
+		<div id="footer"> 
+    <p id="legal">&copy;2010-2011 <a href="http://www.winwinhost.com">WinWinHost</a>. All Rights Reserved.</p>
+    <p id="links"><a href="#"></a></p>
+  </div>
+    </div>
+</body>
+
+<!--  -->

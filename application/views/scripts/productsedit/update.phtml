@@ -1,0 +1,103 @@
+    <script type="text/javascript" src="/js/jHtmlArea/scripts/jquery-ui-1.7.2.custom.min.js"></script>
+    <link rel="Stylesheet" type="text/css" href="/js/jHtmlArea/style/jqueryui/ui-lightness/jquery-ui-1.7.2.custom.css" />
+
+    <script type="text/javascript" src="/js/jHtmlArea/scripts/jHtmlArea-0.7.0.js"></script>
+
+    <link rel="Stylesheet" type="text/css" href="/js/jHtmlArea/style/jHtmlArea.css" />
+
+
+
+<script type="text/javascript">
+
+$(function() {
+	$("#meta_description").htmlarea(); // Initialize jHtmlArea's with all default values
+	$("#content").htmlarea(); // Initialize jHtmlArea's with all default values
+});
+
+</script>
+
+<link href="/skins/template/css/error.css" type="text/css"  rel="stylesheet" />
+
+<script type="text/javascript"><!--
+
+
+$(document).ready(function(){	
+
+	   $("#productForm").validate({
+
+		   rules: {
+		
+			
+			name: {
+				required: true,
+				minlength: 4,
+				maxlength:255
+				
+			},
+			slug: {
+				required: true,
+				minlength: 4,
+				maxlength:100
+				
+			},
+			price: {
+				required: true,
+				minlength: 1,
+				maxlength:7
+				
+			},
+
+			stock: {
+				required: true,
+				minlength: 1,
+				maxlength:11
+				
+			},
+
+			cost: {
+				required: true,
+				minlength: 1,
+				maxlength:7
+				
+			},
+			
+
+			meta_keywords: {
+				required: true,
+				minlength: 4
+				
+			},
+
+			meta_description: {
+				required: true,
+				minlength: 4
+				
+			},
+
+			content: {
+				required: true,
+				minlength: 4
+				
+			}
+			
+
+			
+
+	
+		  }
+		   
+
+	  });
+	   
+});
+</script>
+
+
+<h2>Update a product</h2> 
+<p>To update a  product complete this form and click submit...</p> 
+
+<?php 
+echo $this->form->render(); 
+?> 
+
+

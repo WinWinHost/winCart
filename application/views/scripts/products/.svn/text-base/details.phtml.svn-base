@@ -1,0 +1,29 @@
+
+<link href="/skins/template/css/product.css" type="text/css"  rel="stylesheet" />
+
+<h1><?php  echo $this->product->name; ?></h1>
+
+<br />
+<div style="float:left;">
+	<img src="<?php echo $imagelink="/images/products/".$this->product->thump; ?>" />
+
+	<br />
+
+	<div style="text-align:center;" class="prod"> $<?php  echo $this->product->price; ?> </div>
+	
+	<br />
+	
+				<form action="/cart/add" method="post" style="text-align: center;">
+				<input type="hidden" name="prodID" value="<?php echo  $this->product->id ?> ">
+				<input type="submit" name="submit" value="" class="add">
+			</form>
+
+</div>
+<div style="width:500px;">
+<?php  echo $this->product->description; ?>
+</div>
+
+			<form action="/cart/add" method="post" >
+				<input type="hidden" name="prodID" value="<?php echo $this->product->id ?> ">
+				<input type="submit" name="submit" value="" class="add">
+			</form>

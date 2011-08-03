@@ -1,0 +1,83 @@
+<div class="product_header">
+<h1 class="pheading" style="color:#365386">Articles</h1> 
+
+
+<br />
+
+ <div class="ppagination"> </div>
+
+<br />
+
+</div>
+
+
+
+
+
+<?php 
+if($this->featuredItems) { 
+    foreach ($this->featuredItems as $page) { 
+?> 
+
+
+
+
+<div class="article_details">
+<h3>
+<a href='/page/<?php echo $page->slug; ?>' > 
+        <?php echo $page->name?></a>       
+</h3>
+<div class="article_details_left">
+<a href='/page/<?php echo $page->slug; ?>' > 
+<img class="featuredItemimage"  src='<?php if($page->image){echo $page->image; } else {echo '/images/noimage.jpg';}?>' style='float:left;padding:10px' /> 
+</a>
+</div>
+<div class="article_details_right">
+<p><span>
+<a href='/page/<?php echo $page->slug; ?>' > <?php echo $page->description; ?> </a>
+</span></p>
+</div>
+</div>
+
+
+
+<ul class="article_more"> 
+
+<?php 
+ } 
+} 
+ 
+if($this->recentPages) { ?> 
+
+<h2>&nbsp;&nbsp;More Articles</h2>
+
+    <?php foreach ($this->recentPages as $page) {?> 
+    <li>&nbsp;&nbsp;<a href='/page/<?php echo $page->slug; ?>' > 
+       <?php echo $page->name?></a></li> 
+    <?php } ?> 
+    <?php } ?> 
+    </ul> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
