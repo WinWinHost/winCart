@@ -97,48 +97,145 @@ h1
 
 .headerleft
 {
-	width:299px;
-	float:left
+	width:300px;
+	float:left;
+	padding-left:10px;
+
+
 }
 
 
 
-#logo
+.logo
 {
 	color: #EBEBEB;
 	font-family:Tahoma, Geneva, sans-serif;
 	float:left;
 	width: auto;
+	
 
-	padding:5px 50px 5px 20px;
+	
+	
+}
+.logo h1
+{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:40px;
+	color:#C00;
+	text-transform:uppercase;
+	padding:4px 10px;
 }
 
 .sideCart{
-			padding:6px 5px 0 6px;
-			margin-right:10px;
-			margin-left:20px;
-			width:200px;
-			float:right;
+			padding-left:10px;
+	padding-top:2px;
+	padding-right:54px;
+	padding-bottom:2px;
+	
+
+			margin-left:-40px;
+			margin-top:10px;
+			width:380px;
+			float:left;
 			background:url(../../../images/cart.gif) no-repeat 18 0;
-			font-weight:700;
-			font-size:12px;
-                       height:35px;
+			background-position:top left;
+			
+            height:45px;
 
+			} 
+			.sideCart a{
+				text-decoration:none;
+				color: #D6D6D6;
+				font-size:16px;
+				font-weight:bold;
+				font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+			}
+			
+			.sideCart a:hover{
+				color: #F00;
 			}
 
+			
 
-		.sideCart dt{
+		.sideCartlayer2{
 			font-weight:bold;
-			font-size:16px;
-			color:#585858;
-
-			padding:0 0 1px 33px;
+			font-size:13px;
+			color: #CCC
+			height:30px;
+			width:360px;
+			float:left;
+			padding-left:10px;
 			}
-			.sideCart dd strong{
+			.sideCartlayer3{
 				color:#c91d00;
-				font-size:12px;
-            height: auto;
+				font-size:14px;
+            height:30px;
+			width:340px;
+			float:left;
+			padding-left:20px;
 				}
+
+
+			.usertitle
+			{
+				color: #D6D6D6;
+				font-size:16px;
+				font-weight:bold;
+				font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+				text-transform:capitalize;
+				clear:none;
+			}
+			
+			.usersignout
+			{
+				
+				clear:none;
+				
+			}
+			
+				
+				#userForm {
+    width:290px;
+    height:16px;
+    margin:2px 0px 4px 0px;
+	padding-left:10px;
+	padding-top:2px;
+	padding-right:10px;
+	padding-bottom:2px;
+	font-size:13px;
+	float:left;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-weight:500;
+
+}
+
+
+
+
+
+
+.searchForm {
+
+    width:200px;
+    height: auto;
+	margin:1px 0px 12px 0px;
+	padding-left:35px;
+	padding-top:2px;
+	padding-right:5px;
+	padding-bottom:2px;
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+
+	text-align:center;
+	float: right;
+
+}
+
+.searchForm h2
+{
+font-size:14px;
+color:#C00;
+text-transform:uppercase;
+}
 
 
 
@@ -217,44 +314,10 @@ h1
 
 
 
-#userForm {
-    width:280px;
-    height:auto;
-    margin:15px 0px 5px 0px;
-	padding-left:20px;
-	padding-top:10px;
-	padding-right:20px;
-	padding-bottom:2px;
-	font-size:12px;
-	float: right;
-	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	font-weight:500;
-
-}
 
 
 
-.searchForm {
 
-    width:202px;
-    height: auto;
-	margin:1px 0px 12px 0px;
-	padding-left:20px;
-	padding-top:2px;
-	padding-right:20px;
-	padding-bottom:2px;
-	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
-
-	text-align:center;
-	float:right;
-}
-
-.searchForm h2
-{
-font-size:14px;
-color:#C00;
-text-transform:uppercase;
-}
 
  .left{
 
@@ -713,9 +776,17 @@ padding:0px 0 4px 8px;
     -khtml-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
     -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
 }
+.product_header h1
+{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:30px;
+	color:#C00;
+	text-transform:uppercase;
+}
 .pheading
 {
 	float:left;
+	
 }
 .ppagination
 {
@@ -1141,6 +1212,7 @@ font-weight:700;
 fieldset {
 	border:1px dashed #CCC;
 	padding:10px;
+	width:auto;
 }
 legend {
 	font-family:Arial, Helvetica, sans-serif;
@@ -1162,7 +1234,7 @@ h1 {
 	color:#333;
 }
 label {
-	width:192px;
+	width:292px;
 	height:32px;
 	margin-top:3px;
 	margin-right:2px;
@@ -1633,6 +1705,159 @@ label {
 
 
 .userlistdesc
+{
+	color:#036;
+}
+
+
+
+/** cart **/
+
+
+#cartlistcontainer
+{
+	width:670px;
+}
+.cartlistfield {
+
+    height:auto;
+	width:670px;
+    margin: 0;
+    text-align:center;
+	padding:5px;
+    -moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+    border:#749BCE 1px solid;
+    background: #fff;
+	font-size:12px;
+}
+
+
+.cartlistfieldname
+{
+	width:80px;
+	height: auto;
+	background-color: #D4BFAA;
+	float: right;
+	padding:5px;
+	clear:left;
+	margin:2px;
+	clear:both;
+}
+.cartlistfieldname h2
+{
+	font-size:20px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#FFF;
+}
+
+.cartlistfieldfirstname
+{
+	width:110px;
+	height: auto;
+	background-color: #AA9FAA;
+	float: right;
+	padding:5px;
+	clear:left;
+	margin:2px;
+}
+.cartlistfieldfirstname h2
+{
+	font-size:20px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#FFF;
+}
+
+.cartlistfieldlastname
+{
+	width:110px;
+	height: auto;
+	background-color: #AA9FAA;
+	float: right;
+	padding:5px;
+	clear:left;
+	margin:2px;
+}
+.cartlistfieldlastname h2
+{
+	font-size:20px;f	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#FFF;
+}
+
+.cartlistfieldrole
+{
+	width:200px;
+	height: auto;
+	background-color: #CCF;
+	float: right;
+	padding:5px;
+	clear:left;
+	margin:2px;
+}
+.cartlistfieldrole h2
+{
+	font-size:20px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#FFF;
+}
+
+.cartlistfieldactions
+{
+	width:100px;
+	height: auto;
+	background-color:#999;
+	float: left;
+	padding:5px;
+	margin:2px;
+	font-size:12px
+}
+.cartlistfieldactions h2
+{
+	font-size:18px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color:#FFF;
+}
+.cartlistfieldactions a
+{
+	
+	color:#000;
+}
+.cartuserlistfieldactions a:hover
+{
+	
+	color:#fff;
+}
+.cartlistfieldactionsspan
+{
+	width: auto;
+	border-right:1px;
+	border-right-color:#2A1F00;
+	background-color:;
+	float:left;
+	padding:px;
+	margin-left:25px;
+	}
+
+.cartlistfieldcreate
+{
+	clear:both;
+	width:657px;
+	height:auto;
+	background-color: #D6D6D6;
+	padding:5px;
+	margin-top:6px;
+	margin-left:2px;
+}
+
+.cartlistfieldh2       
+{
+	margin:10px 10px 10px;
+	font-size:18px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;	
+}
+
+
+.cartlistdesc
 {
 	color:#036;
 }
