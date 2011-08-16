@@ -36,7 +36,8 @@ class CartController extends Zend_Controller_Action
      * @var object
      */
 		
-	protected $identity;   
+	protected $identity;  
+
 	
 	protected $optionsModel;
 	
