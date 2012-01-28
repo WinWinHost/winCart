@@ -1,3 +1,0 @@
-[submodule "src/python"]
-        path = wincart/application
-        url = git://github.com/WinWinHost/winCart/application.git
