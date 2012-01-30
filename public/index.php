@@ -1,15 +1,9 @@
 <?php
 
-error_reporting(0);
+error_reporting(E_ALL|E_STRICT);
+ini_set('display_errors', 'on');
+
 date_default_timezone_set('America/Los_Angeles');
-
-set_include_path(implode(PATH_SEPARATOR,
-array(
-dirname(__FILE__)  . DIRECTORY_SEPARATOR . 'wincart' . DIRECTORY_SEPARATOR . 'library',
-get_include_path(),
-)
-
-));
 
 
 
@@ -24,9 +18,11 @@ defined('APPLICATION_ENV')
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH . '/../library'),
-    get_include_path(),
+    get_include_path(), //this line is for global php includes
 )));
 
+//require_once 'Zend/Loader/Autoloader.php';
+//Zend_Loader_Autoloader::getInstance()->suppressNotFoundWarnings(false);
 
 /** Zend_Application */
 require_once 'Zend/Application.php';
@@ -37,6 +33,5 @@ $application = new Zend_Application(
     APPLICATION_PATH . '/configs/application.ini'
 );
 
-$application->bootstrap()->run();
-
-?>
+$application->bootstrap()
+			->run();

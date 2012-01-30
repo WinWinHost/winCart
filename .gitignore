@@ -1,3 +1,6 @@
 /nbproject/private/
 /.settings/
-/library/Zend/
+/library/Zend/access.log
+error.log
+public/images/products/Thumbs.db
+access.log
