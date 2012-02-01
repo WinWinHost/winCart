@@ -1,15 +1,18 @@
 <?php
 
-error_reporting(E_ALL|E_STRICT);
-ini_set('display_errors', 'on');
+error_reporting(E_ALL|E_STRICT); // this line for debuging
+ini_set('display_errors', 'on'); // this line for debuging
 
 date_default_timezone_set('America/Los_Angeles');
 
-
+// Define path to base directory
+defined('BASE_PATH')
+    || define('BASE_PATH', realpath(dirname(__FILE__)));
 
 // Define path to application directory
 defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
+    || define('APPLICATION_PATH', BASE_PATH . '/../application');
+
 
 // Define application environment
 defined('APPLICATION_ENV')
@@ -33,5 +36,4 @@ $application = new Zend_Application(
     APPLICATION_PATH . '/configs/application.ini'
 );
 
-$application->bootstrap()
-			->run();
+$application->bootstrap()->run();

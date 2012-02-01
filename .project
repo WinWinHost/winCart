@@ -3,6 +3,7 @@
 	<name>wincart</name>
 	<comment></comment>
 	<projects>
+		<project>daigera</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
