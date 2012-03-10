@@ -43,15 +43,13 @@ if (isset($_POST['page'])) {
                         ));
                 
            
-                
                 $config = new Zend_Config_Ini('/../../application/configs/application.ini');
                 $data = $config->toArray();
                 $data['production']['resources']['db']['params']['host'] = $db['hostname'];
                 $data['production']['resources']['db']['params']['database'] = $db['database'];
                 $data['production']['resources']['db']['params']['username'] = $db['username'];
                 $data['production']['resources']['db']['params']['password'] = $db['password'];
-                var_dump($data);
-                
+
                 $writer = new Zend_Config_Writer_Ini(array(
                     'config'   => new Zend_Config($data),
                     'filename' => realpath('../../application/configs/application.ini'), 
