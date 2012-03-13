@@ -8,13 +8,22 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
      */
     private $_db;
     
+    
+    /**
+     *  Inits default db adapter 
+     */
     protected function _initDb()
-    {
+    {      
         if ( $this->_db === null ) {
-            if(file_exists(APPLICATION_PATH . '/configs/configs.php')) {
-                require_once(APPLICATION_PATH . '/configs/configs.php');
-                $this->_db = Zend_Db::factory($database['adapter'], $database['params']);
+            $file = APPLICATION_PATH . '/configs/database.php';
+            if(file_exists($file) && filesize($file) > 100) {
+                $database = require_once($file);
+                $this->_db = Zend_Db::factory($database['database']['adapter'], 
+                                              $database['database']['params']);
                 Zend_Db_Table::setDefaultAdapter($this->_db);
+            } else {
+                //Go to install script url
+                header('Location: /install');
             }
         }
     }

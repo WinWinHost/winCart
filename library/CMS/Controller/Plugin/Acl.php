@@ -31,6 +31,7 @@ $acl->add(new Zend_Acl_Resource('checkout'));
 $acl->add(new Zend_Acl_Resource('ordersadmin'));  
 $acl->add(new Zend_Acl_Resource('options')); 
 $acl->add(new Zend_Acl_Resource('install')); 
+
  // set up the access rules 
 $acl->allow(null, array('index', 'error','products')); 
 
@@ -42,6 +43,7 @@ $acl->allow('guest', 'menu', array('render'));
 $acl->allow('guest', 'user', array('login','create')); 
 $acl->allow('guest', 'feed'); 
 $acl->allow('guest', 'install'); 
+$acl->allow('guest', 'product'); 
 $acl->allow('guest', 'cart',array('index','delete','add','update')); 
 
 

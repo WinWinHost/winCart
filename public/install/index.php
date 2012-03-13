@@ -7,7 +7,7 @@ set_include_path(implode(PATH_SEPARATOR, array(
 )));
 require 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance();
-require '/inc/HTML.php';
+require 'inc/HTML.php';
 
 echo $header;
 if (isset($_POST['page'])) {
@@ -15,7 +15,7 @@ if (isset($_POST['page'])) {
         echo $step1;
     } else if ($_POST['page'] == 'step2') {
         $_SESSION['database'] = array(
-            'database' => $_POST['database'],
+            'dbname' => $_POST['database'],
             'hostname' => $_POST['hostname'],
             'username' => $_POST['username'],
             'password' => $_POST['password']
@@ -39,23 +39,20 @@ if (isset($_POST['page'])) {
                 ));
                 
                 mysql_query(sprintf("INSERT INTO `users` (`id`, `role`, `username`, `password`) VALUES (1, 'administrator', '%s', '%s')",
-                        $_POST['name'], md5($_POST['pass'])
-                        ));
-                
-           
-                $config = new Zend_Config_Ini('/../../application/configs/application.ini');
-                $data = $config->toArray();
-                $data['production']['resources']['db']['params']['host'] = $db['hostname'];
-                $data['production']['resources']['db']['params']['database'] = $db['database'];
-                $data['production']['resources']['db']['params']['username'] = $db['username'];
-                $data['production']['resources']['db']['params']['password'] = $db['password'];
-
-                $writer = new Zend_Config_Writer_Ini(array(
-                    'config'   => new Zend_Config($data),
-                    'filename' => realpath('../../application/configs/application.ini'), 
+                       $_POST['name'], md5($_POST['pass'])
                 ));
-                $writer->write();
                 
+                $data = array();
+                $data['database']['adapter'] = 'Pdo_Mysql';
+                $data['database']['params']['host'] = $db['hostname'];
+                $data['database']['params']['database'] = $db['database'];
+                $data['database']['params']['username'] = $db['username'];
+                $data['database']['params']['password'] = $db['password'];
+                
+                $writer = new Zend_Config_Writer_Array();
+                $writer->setConfig(new Zend_Config($data));
+                $writer->setFilename(realpath('../../application/configs/database.php'));
+                $writer->write();
                 echo $finish;
             }
         }
